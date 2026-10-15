@@ -1,0 +1,9 @@
+dataset_name: 'scannet'
+camera_params:
+  image_height: 504
+  image_width: 504
+  fx: 0.0  # loaded from intrinsic/intrinsic_color.txt
+  fy: 0.0
+  cx: 0.0
+  cy: 0.0
+  png_depth_scale: 1000.0

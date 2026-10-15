@@ -422,3 +422,8 @@ python scripts/generate_ai2thor_dataset.py \
     --randomize_move_moveable_ratio $MOVE_RATIO \
     --randomize_move_pickupable_ratio $MOVE_RATIO
 ```
+
+
+## DejaView baseline adaptation
+
+See [the workflow and historical experiment contract](docs/dejaview_baseline.md).

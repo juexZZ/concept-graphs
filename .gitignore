@@ -176,3 +176,11 @@ cfslam/tmp.bash
 cfslam/wandb
 cfslam/tmp.png
 cfslam/temp.json
+
+# DejaView local dependencies and generated artifacts
+/Grounded-Segment-Anything/
+/chamferdist/
+/gradslam/
+/helps.sh
+/outputs/
+/eval_results/runs/
