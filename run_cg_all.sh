@@ -11,17 +11,12 @@
 #   GPU_ID=7 STAGE=eval   ./run_cg_all.sh    # only stage 3
 #   GPU_ID=7 ONLY="pantry1 pantry2" ./run_cg_all.sh   # subset of datasets
 
-set -e
-
-GPU_ID="${GPU_ID:-0}"
-STRIDE="${STRIDE:-1}"
-THRESHOLD="${THRESHOLD:-1.2}"
-MASK_CONF_THRESHOLD="${MASK_CONF_THRESHOLD:-0.95}"
-FILTER_INTERVAL="${FILTER_INTERVAL:-10}"
-OBJ_MIN_DETECTIONS="${OBJ_MIN_DETECTIONS:-2}"
-if [ "$STRIDE" != "1" ]; then STRIDE_SFX="_stride${STRIDE}"; else STRIDE_SFX=""; fi
-SAVE_SUFFIX="${SAVE_SUFFIX:-overlap_maskconf${MASK_CONF_THRESHOLD}_simsum${THRESHOLD}_dbscan.1_merge20${STRIDE_SFX}}"
-STAGE="${STAGE:-all}"   # all | detect | map | eval
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/scripts/dejaview_env.sh"
+export DATASET_ROOT DATASET_CONFIG GPU_ID STRIDE THRESHOLD MASK_CONF_THRESHOLD
+export OBJ_MIN_DETECTIONS FILTER_INTERVAL MERGE_OVERLAP_THRESH
+export MERGE_VISUAL_SIM_THRESH MERGE_TEXT_SIM_THRESH RUN_ID SAVE_SUFFIX PYTHON
+STAGE="${STAGE:-all}"
 
 # Datasets and the chapter id their annotation maps to.
 # Format: "dataset_name chapter_id"
@@ -71,7 +66,12 @@ run_one_eval() {
   local NAME="$1"
   local CH="$2"
   echo "===== eval: $NAME ch=$CH ====="
-  GPU_ID="$GPU_ID" CHAPTER_ID="$CH" STRIDE="$STRIDE" THRESHOLD="$THRESHOLD" \
+  local ANN_ROOT="${ANNOTATION_ROOT:-}"
+  case "$NAME" in
+    pantry*) ANN_ROOT="${PANTRY_ANNOTATION_ROOT:-$ANN_ROOT}" ;;
+    *) ANN_ROOT="${STANDARD_ANNOTATION_ROOT:-$ANN_ROOT}" ;;
+  esac
+  ANNOTATION_ROOT="$ANN_ROOT" GPU_ID="$GPU_ID" CHAPTER_ID="$CH" STRIDE="$STRIDE" THRESHOLD="$THRESHOLD" \
     MASK_CONF_THRESHOLD="$MASK_CONF_THRESHOLD" SAVE_SUFFIX="$SAVE_SUFFIX" \
     ./run_cg_evaluator.sh "$NAME"
 }

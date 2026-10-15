@@ -66,3 +66,68 @@ historical artifacts document the original machine.
 
 Model weights, maps, images, detections, compiled dependencies and full run
 logs are excluded. Keep upstream LICENSE and citation information.
+
+## Corrected workflow (after the legacy tag)
+
+Use a fresh `RUN_ID` for each experiment. Runners resolve repository-relative
+code and accept externally supplied absolute data paths. They refuse existing
+map outputs and result files; the evaluator's explicit `--overwrite` option
+is available for intentional JSON replacement. Current results go under
+`eval_results/runs/` and are ignored. Existing legacy result JSON is unchanged.
+
+Mapping records the exact command, source commit, tracked dirty state and
+success/failure in a run manifest. Evaluation records its arguments, revision,
+protocol-input SHA-256 hashes, and the map manifest if available. A missing
+manifest means map provenance is unknown. These records do not certify the
+contents of large geometry/checkpoint files: preserve their versions with
+the experiment. Do not change a checkout while a run is active.
+
+Set the paths below for your machine (absolute paths recommended):
+
+```bash
+export DATASET_ROOT=/path/to/Depth-Anything-3/metric_depth_results
+export ANNOTATION_ROOT=/path/to/metacam/rebuttal
+export OBJECT_LIST_ROOT=/path/to/DejaView/eval/object_test_lists
+export RUN_ID=pantry1_numeric_v1
+export GPU_ID=0
+```
+
+All stages share `scripts/dejaview_env.sh`: mask confidence 0.95, similarity
+sum 1.2, stride 1, minimum detections 2, filter interval 10, and merge gates
+0.7/0.8/0.8. Map names include these adjustable settings and RUN_ID. This is
+a declared configuration, not a claim that it generated every legacy result.
+The upstream algorithm is unchanged.
+
+```bash
+./run_cg_detect.sh pantry1
+./run_cg_mapping.sh pantry1
+CHAPTER_ID=1 ./run_cg_evaluator.sh pantry1
+./run_cg_visualize.sh pantry1 remote
+# Alternatively, run all stages for a subset:
+ONLY="pantry1 pantry2" ./run_cg_all.sh
+```
+
+Choose either individual stages or the batch command for a new run. Detection
+caches are shared across mapping experiments. Existing caches are rejected by
+default; after checking coverage, stride and checkpoint provenance, use
+`REUSE_DETECTIONS=1` to reuse them explicitly. A larger mapping stride can
+reuse a denser cache; a sparser cache cannot serve missing mapping frames.
+For mixed dataset families, the batch runner accepts
+`STANDARD_ANNOTATION_ROOT` and `PANTRY_ANNOTATION_ROOT`. `DATASET_CONFIG`,
+`PYTHON`, `MAP_PKL`, `MAPPING`, `OUTPUT_PATH`, and `CONTRIBUTOR_TOP_T` can be
+set explicitly. For map creation, change `SAVE_SUFFIX` to control the output;
+`MAP_PKL` is intended for evaluating/viewing existing maps.
+
+Empty maps now produce misses/true negatives without an np.stack failure.
+Invalid chapters fail explicitly. Viewer images can be relocated with
+`--color_dir`; an empty map produces an explanatory error.
+
+Validation: `python -m unittest discover -s tests -p test_dejaview_baseline.py -v`
+checks empty-map initialization/evaluation, numeric contributor ordering,
+output preservation, stage/batch argument routing and failed-run provenance.
+Model construction is mocked in the empty-map test; no weights are downloaded.
+
+Both the shell syntax and new/modified Python syntax were checked. Tests run
+in the existing baseline environments. No full GPU mapping, accuracy rerun,
+or browser rendering validation was performed. The headless backend change
+is a fallback at import time, not a guarantee for every GUI configuration.

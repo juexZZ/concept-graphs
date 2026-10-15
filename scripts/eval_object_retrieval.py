@@ -24,6 +24,7 @@ import numpy as np
 import torch
 import open_clip
 from tqdm import tqdm
+from baseline_io import save_result, provenance
 
 
 def _split_left_right(images: Iterable[dict]):
@@ -109,7 +110,8 @@ class ConceptGraphsRetriever:
         # results: {'objects': [...], 'bg_objects': [...] | None, 'cfg': ..., 'class_names': [...]}
         self.objects = results["objects"]
         # Stack clip features (D,) -> (N, D)
-        feats = np.stack([np.asarray(o["clip_ft"], dtype=np.float32).reshape(-1) for o in self.objects])
+        feats = (np.stack([np.asarray(o["clip_ft"], dtype=np.float32).reshape(-1) for o in self.objects])
+                 if self.objects else np.empty((0, 0), dtype=np.float32))
         # L2-normalize defensively
         norms = np.linalg.norm(feats, axis=-1, keepdims=True)
         norms[norms == 0] = 1.0
@@ -132,6 +134,8 @@ class ConceptGraphsRetriever:
         return feats.cpu().numpy()  # (1, D)
 
     def query_top_instance(self, text_feats: np.ndarray, top_k: int = 1):
+        if not len(self.objects):
+            return np.array([], dtype=int), np.array([], dtype=np.float32)
         sims = (self.clip_feats @ text_feats.T).reshape(-1)
         order = np.argsort(-sims)[:top_k]
         return order, sims[order]
@@ -175,6 +179,9 @@ class ObjectEvaluator:
         )
 
     def _evaluate_single(self, query: str, chapter_ann: dict, query_present: bool):
+        if not len(self.retriever.objects):
+            return {"hit_any_contributor": False, "hit_primary": False, "hit@1": False,
+                    "detected": False, "results": []}
         text_feats = self.retriever.get_text_embedding(query)
         order, sims = self.retriever.query_top_instance(text_feats, top_k=1)
         if len(order) == 0:
@@ -218,7 +225,9 @@ class ObjectEvaluator:
         hit_any_count = miss_any_count = 0
         hit_primary_count = miss_primary_count = 0
         ghost_count = 0
-        chapter_ann = self.chapters.annotation_by_chapter.get(chapter_id, {})
+        if chapter_id not in self.chapters.annotation_by_chapter:
+            raise ValueError(f"Unknown chapter {chapter_id}")
+        chapter_ann = self.chapters.annotation_by_chapter[chapter_id]
         n_gt_in_chapter = sum(1 for files in chapter_ann.values() if files)
 
         for query in tqdm(object_list, desc=f"chapter {chapter_id}"):
@@ -308,7 +317,10 @@ def main():
     p.add_argument("--similarity_threshold", type=float, default=0.2)
     p.add_argument("--ignore_similarity_threshold", action="store_true")
     p.add_argument("--contributor_top_t", type=int, default=1)
+    p.add_argument("--overwrite", action="store_true", help="Allow replacing an existing result JSON")
     args = p.parse_args()
+    if Path(args.output_path).exists() and not args.overwrite:
+        p.error(f"Output already exists: {args.output_path}; choose a new path or --overwrite")
 
     retriever = ConceptGraphsRetriever(
         map_pkl=args.map_pkl, mapping_path=args.mapping,
@@ -334,9 +346,13 @@ def main():
         print(f"{k}: {v}")
     print("*******************************************************")
 
-    os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
-    with open(args.output_path, "w") as f:
-        json.dump(results, f, indent=2)
+    results["meta"]["provenance"] = provenance(
+        Path(__file__).resolve().parents[1], args,
+        [args.object_list_txt, Path(args.dataset_dir) / "stream_annotations.json", args.mapping],
+    )
+    map_manifest = Path(str(args.map_pkl) + ".run.json")
+    results["meta"]["map_run"] = json.loads(map_manifest.read_text()) if map_manifest.is_file() else None
+    save_result(args.output_path, results, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":

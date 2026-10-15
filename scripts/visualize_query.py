@@ -51,6 +51,7 @@ def main():
     p.add_argument("--mapping", required=True)
     p.add_argument("--full_pkl", default=None,
                    help="optional: pre-post pkl.gz; its concatenated pcds shown as dim scene background")
+    p.add_argument("--color_dir", default=None, help="Relocate stored contributor image paths to this color directory")
     p.add_argument("--port", type=int, default=8080)
     p.add_argument("--clip_type", default="ViT-H-14")
     p.add_argument("--clip_pretrained", default="laion2b_s32b_b79k")
@@ -65,6 +66,9 @@ def main():
         results = pickle.load(f)
     objects = results["objects"]
     print(f"loaded {len(objects)} objects from {args.map_pkl}")
+
+    if not objects:
+        raise SystemExit("Map contains no queryable objects")
 
     # Stack + L2-normalize CLIP feats
     feats = np.stack(
@@ -109,7 +113,7 @@ def main():
             pts = np.asarray(o["pcd_np"], dtype=np.float32)
             if len(pts) == 0:
                 continue
-            cols = np.asarray(o.get("pcd_color_np", None))
+            cols = o.get("pcd_color_np")
             if cols is None or len(cols) != len(pts):
                 cols = np.tile(np.asarray(o.get("inst_color", [0.5, 0.5, 0.5]))[None, :], (len(pts), 1))
             bg_pts_list.append(pts)
@@ -200,6 +204,8 @@ def main():
             latest_path = max(cps, key=stem_int)
             latest_stem = stem_int(latest_path)
             latest_orig = idx_to_orig.get(latest_stem)
+            if args.color_dir:
+                latest_path = str(Path(args.color_dir) / Path(latest_path).name)
 
         # recolor: dim everything, top-1 in red
         for j, h in enumerate(pc_handles):
