@@ -1,0 +1,213 @@
+{
+  "dataset_name": "12thfloor_first150",
+  "chapter_id": 1,
+  "object_list": [
+    "blue couch",
+    "yellow cube",
+    "white bottle",
+    "black coat",
+    "black backpack",
+    "shopping bag",
+    "scarf"
+  ],
+  "retrieval_results": {
+    "blue couch": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 86,
+          "similarity": 0.25746119022369385,
+          "score": 0.25746119022369385,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769567516329032000.png",
+          "frame_index": 38,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769567516329032000.png",
+              "frame_index": 38
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "yellow cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 106,
+          "similarity": 0.29128098487854004,
+          "score": 0.29128098487854004,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769567526829555000.png",
+          "frame_index": 45,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769567526829555000.png",
+              "frame_index": 45
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "white bottle": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 92,
+          "similarity": 0.3448607325553894,
+          "score": 0.3448607325553894,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769567515328982000.png",
+          "frame_index": 37,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769567515328982000.png",
+              "frame_index": 37
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "black coat": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 26,
+          "similarity": 0.34034740924835205,
+          "score": 0.34034740924835205,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769567495828074000.png",
+          "frame_index": 89,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769567495828074000.png",
+              "frame_index": 89
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "black backpack": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 308,
+          "similarity": 0.3181408643722534,
+          "score": 0.3181408643722534,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769567506328533000.png",
+          "frame_index": 103,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769567506328533000.png",
+              "frame_index": 103
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "shopping bag": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 307,
+          "similarity": 0.2404012680053711,
+          "score": 0.2404012680053711,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769567507828664000.png",
+          "frame_index": 104,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769567507828664000.png",
+              "frame_index": 104
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "scarf": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 26,
+          "similarity": 0.2550885081291199,
+          "score": 0.2550885081291199,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769567495828074000.png",
+          "frame_index": 89,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769567495828074000.png",
+              "frame_index": 89
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    }
+  },
+  "hit_rate_any_contributor": 0.42857142857142855,
+  "hit_rate(TP)": 0.42857142857142855,
+  "miss_rate(FN)": 0.5714285714285714,
+  "hit_rate_primary": 0.42857142857142855,
+  "miss_rate_primary(FN)": 0.5714285714285714,
+  "hit@1": 0.42857142857142855,
+  "ghost_rate(FP)": 0.0,
+  "True_Negative(TN)": 0.0,
+  "In chapter hit (any contributor)": 0.42857142857142855,
+  "In chapter miss (any contributor)": 0.5714285714285714,
+  "In chapter hit (primary only)": 0.42857142857142855,
+  "In chapter miss (primary only)": 0.5714285714285714,
+  "recall": 0.4285714285653061,
+  "precision": 0.9999999999666667,
+  "f1_score": 0.599999999946,
+  "meta": {
+    "similarity_threshold": -1.0,
+    "ignore_similarity_threshold_for_hits": true,
+    "contributor_top_t": 1,
+    "tp_fn_criterion": "any_contributor_in_gt",
+    "primary_metric_alias_hit@1": "hit_rate_primary",
+    "n_gt_objects_in_chapter_annotation": 8,
+    "n_evaluated_positive_queries": 7,
+    "in_chapter_rates_denominator": "object_list queries with GT in this chapter",
+    "score_type": "cosine_similarity",
+    "map_pkl": "/local_data/jz4725/Depth-Anything-3/metric_depth_results/12thfloor_first150/pcd_saves/full_pcd_none_overlap_maskconf0.95_simsum1.2_dbscan.1_merge20_post.pkl.gz",
+    "clip_type": "ViT-H-14",
+    "clip_pretrained": "laion2b_s32b_b79k",
+    "model": "conceptgraphs_variant_a"
+  }
+}

@@ -1,0 +1,689 @@
+{
+  "dataset_name": "2ndfloor",
+  "chapter_id": 1,
+  "object_list": [
+    "tissue box",
+    "white bottle",
+    "grey bottle",
+    "coat",
+    "shopping bag",
+    "backpack",
+    "pen",
+    "blue marker",
+    "boots",
+    "grey pillow",
+    "plant",
+    "yellow cube",
+    "crackers",
+    "headphone",
+    "tomato",
+    "coffee cup",
+    "book",
+    "backpack",
+    "carrot",
+    "pumpkin",
+    "remote",
+    "grey cap",
+    "gloves",
+    "paper towel roll",
+    "scissors",
+    "red soda can",
+    "green cube"
+  ],
+  "retrieval_results": {
+    "tissue box": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 4,
+          "similarity": 0.34525445103645325,
+          "score": 0.34525445103645325,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569578778042000.png",
+          "frame_index": 44,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569578778042000.png",
+              "frame_index": 44
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "white bottle": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 95,
+          "similarity": 0.27762067317962646,
+          "score": 0.27762067317962646,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569947295038000.png",
+          "frame_index": 987,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569947295038000.png",
+              "frame_index": 987
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "grey bottle": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 95,
+          "similarity": 0.30475860834121704,
+          "score": 0.30475860834121704,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569947295038000.png",
+          "frame_index": 987,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569947295038000.png",
+              "frame_index": 987
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "coat": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 90,
+          "similarity": 0.26622694730758667,
+          "score": 0.26622694730758667,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569900292961000.png",
+          "frame_index": 940,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569900292961000.png",
+              "frame_index": 940
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "shopping bag": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 3,
+          "similarity": 0.30520984530448914,
+          "score": 0.30520984530448914,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569579778148000.png",
+          "frame_index": 45,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569579778148000.png",
+              "frame_index": 45
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "backpack": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 3,
+          "similarity": 0.2394278347492218,
+          "score": 0.2394278347492218,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569579778148000.png",
+          "frame_index": 45,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569579778148000.png",
+              "frame_index": 45
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "pen": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 30,
+          "similarity": 0.2319996953010559,
+          "score": 0.2319996953010559,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569869791616000.png",
+          "frame_index": 317,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569869791616000.png",
+              "frame_index": 317
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "blue marker": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 26,
+          "similarity": 0.27763694524765015,
+          "score": 0.27763694524765015,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569900292964000.png",
+          "frame_index": 361,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569900292964000.png",
+              "frame_index": 361
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "boots": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 19,
+          "similarity": 0.289421945810318,
+          "score": 0.289421945810318,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569762786783000.png",
+          "frame_index": 220,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569762786783000.png",
+              "frame_index": 220
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "grey pillow": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 12,
+          "similarity": 0.2643679976463318,
+          "score": 0.2643679976463318,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569725785101000.png",
+          "frame_index": 190,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569725785101000.png",
+              "frame_index": 190
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "plant": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 51,
+          "similarity": 0.3068411648273468,
+          "score": 0.3068411648273468,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769570012297919000.png",
+          "frame_index": 479,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769570012297919000.png",
+              "frame_index": 479
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "yellow cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 74,
+          "similarity": 0.2591174244880676,
+          "score": 0.2591174244880676,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569617780022000.png",
+          "frame_index": 655,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569617780022000.png",
+              "frame_index": 655
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "crackers": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 28,
+          "similarity": 0.22985470294952393,
+          "score": 0.22985470294952393,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569870791579000.png",
+          "frame_index": 319,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569870791579000.png",
+              "frame_index": 319
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "headphone": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 38,
+          "similarity": 0.22642356157302856,
+          "score": 0.22642356157302856,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569965295759000.png",
+          "frame_index": 429,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569965295759000.png",
+              "frame_index": 429
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "tomato": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 35,
+          "similarity": 0.22929489612579346,
+          "score": 0.22929489612579346,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569901292995000.png",
+          "frame_index": 362,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569901292995000.png",
+              "frame_index": 362
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "coffee cup": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 95,
+          "similarity": 0.23660573363304138,
+          "score": 0.23660573363304138,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569947295038000.png",
+          "frame_index": 987,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569947295038000.png",
+              "frame_index": 987
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "book": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 26,
+          "similarity": 0.2641580104827881,
+          "score": 0.2641580104827881,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569900292964000.png",
+          "frame_index": 361,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569900292964000.png",
+              "frame_index": 361
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "carrot": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 51,
+          "similarity": 0.2234201431274414,
+          "score": 0.2234201431274414,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769570012297919000.png",
+          "frame_index": 479,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769570012297919000.png",
+              "frame_index": 479
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "pumpkin": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 90,
+          "similarity": 0.22491684556007385,
+          "score": 0.22491684556007385,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569900292961000.png",
+          "frame_index": 940,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569900292961000.png",
+              "frame_index": 940
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "remote": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 10,
+          "similarity": 0.26903557777404785,
+          "score": 0.26903557777404785,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569667782296000.png",
+          "frame_index": 125,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569667782296000.png",
+              "frame_index": 125
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "grey cap": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 12,
+          "similarity": 0.2733879089355469,
+          "score": 0.2733879089355469,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569725785101000.png",
+          "frame_index": 190,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569725785101000.png",
+              "frame_index": 190
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "gloves": {
+      "hit_any_contributor": true,
+      "hit_primary": true,
+      "hit@1": true,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 19,
+          "similarity": 0.34932634234428406,
+          "score": 0.34932634234428406,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569762786783000.png",
+          "frame_index": 220,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569762786783000.png",
+              "frame_index": 220
+            }
+          ]
+        }
+      ],
+      "status": "hit",
+      "present_in_chapter": true
+    },
+    "paper towel roll": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 4,
+          "similarity": 0.2644992470741272,
+          "score": 0.2644992470741272,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569578778042000.png",
+          "frame_index": 44,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569578778042000.png",
+              "frame_index": 44
+            }
+          ]
+        }
+      ],
+      "status": "miss",
+      "present_in_chapter": true
+    },
+    "scissors": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 30,
+          "similarity": 0.23266565799713135,
+          "score": 0.23266565799713135,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569869791616000.png",
+          "frame_index": 317,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569869791616000.png",
+              "frame_index": 317
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "red soda can": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 95,
+          "similarity": 0.3309059143066406,
+          "score": 0.3309059143066406,
+          "score_type": "cosine_similarity",
+          "frame_name": "right_1769569947295038000.png",
+          "frame_index": 987,
+          "contributor_frames": [
+            {
+              "frame_name": "right_1769569947295038000.png",
+              "frame_index": 987
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    },
+    "green cube": {
+      "hit_any_contributor": false,
+      "hit_primary": false,
+      "hit@1": false,
+      "detected": true,
+      "results": [
+        {
+          "instance_id": 10,
+          "similarity": 0.2646629810333252,
+          "score": 0.2646629810333252,
+          "score_type": "cosine_similarity",
+          "frame_name": "left_1769569667782296000.png",
+          "frame_index": 125,
+          "contributor_frames": [
+            {
+              "frame_name": "left_1769569667782296000.png",
+              "frame_index": 125
+            }
+          ]
+        }
+      ],
+      "status": "ghost",
+      "present_in_chapter": false
+    }
+  },
+  "hit_rate_any_contributor": 0.14814814814814814,
+  "hit_rate(TP)": 0.14814814814814814,
+  "miss_rate(FN)": 0.6296296296296297,
+  "hit_rate_primary": 0.14814814814814814,
+  "miss_rate_primary(FN)": 0.6296296296296297,
+  "hit@1": 0.14814814814814814,
+  "ghost_rate(FP)": 0.2222222222222222,
+  "True_Negative(TN)": 0.0,
+  "In chapter hit (any contributor)": 0.19047619047619047,
+  "In chapter miss (any contributor)": 0.8095238095238095,
+  "In chapter hit (primary only)": 0.19047619047619047,
+  "In chapter miss (primary only)": 0.8095238095238095,
+  "recall": 0.19047619047528347,
+  "precision": 0.399999999996,
+  "f1_score": 0.2580645160836629,
+  "meta": {
+    "similarity_threshold": -1.0,
+    "ignore_similarity_threshold_for_hits": true,
+    "contributor_top_t": 1,
+    "tp_fn_criterion": "any_contributor_in_gt",
+    "primary_metric_alias_hit@1": "hit_rate_primary",
+    "n_gt_objects_in_chapter_annotation": 20,
+    "n_evaluated_positive_queries": 21,
+    "in_chapter_rates_denominator": "object_list queries with GT in this chapter",
+    "score_type": "cosine_similarity",
+    "map_pkl": "/local_data/jz4725/Depth-Anything-3/metric_depth_results/2ndfloor/pcd_saves/full_pcd_none_overlap_maskconf0.95_simsum1.0_dbscan.1_merge20_post.pkl.gz",
+    "clip_type": "ViT-H-14",
+    "clip_pretrained": "laion2b_s32b_b79k",
+    "model": "conceptgraphs_variant_a"
+  }
+}
