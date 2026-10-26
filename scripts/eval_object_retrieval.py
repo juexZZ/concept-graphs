@@ -121,6 +121,7 @@ class ConceptGraphsRetriever:
 
         self.model, _, _ = open_clip.create_model_and_transforms(
             clip_type, pretrained=clip_pretrained, device=device,
+            cache_dir=os.environ.get("CG_CLIP_CACHE_DIR"),
         )
         self.model.eval()
         self.tokenizer = open_clip.get_tokenizer(clip_type)

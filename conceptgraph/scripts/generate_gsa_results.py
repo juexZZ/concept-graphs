@@ -13,7 +13,7 @@ import cv2
 import json
 import imageio
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use(os.environ.get("MPLBACKEND", "TkAgg"))
 from matplotlib import pyplot as plt
 import numpy as np
 import pickle
@@ -33,7 +33,6 @@ import torch.nn.functional as F
 
 
 try: 
-    from groundingdino.util.inference import Model
     from segment_anything import sam_model_registry, SamPredictor, SamAutomaticMaskGenerator
 except ImportError as e:
     print("Import Error: Please install Grounded Segment Anything following the instructions in README.")
@@ -54,13 +53,8 @@ sys.path.append(TAG2TEXT_PATH) # This is needed for some imports in the Tag2Text
 sys.path.append(EFFICIENTSAM_PATH)
 
 import torchvision.transforms as TS
-try:
-    from ram.models import ram
-    from ram.models import tag2text
-    from ram import inference_tag2text, inference_ram
-except ImportError as e:
-    print("RAM sub-package not found. Please check your GSA_PATH. ")
-    raise e
+# Tagging/detection packages are optional for the branch's class_set=none path.
+# Import them at their actual use site; SAM/OpenCLIP inference is unchanged.
 
 # Disable torch gradient computation
 torch.set_grad_enabled(False)
@@ -71,7 +65,9 @@ GROUNDING_DINO_CHECKPOINT_PATH = os.path.join(GSA_PATH, "./groundingdino_swint_o
 
 # Segment-Anything checkpoint
 SAM_ENCODER_VERSION = "vit_h"
-SAM_CHECKPOINT_PATH = os.path.join(GSA_PATH, "./sam_vit_h_4b8939.pth")
+SAM_CHECKPOINT_PATH = os.environ.get(
+    "SAM_CHECKPOINT_PATH", os.path.join(GSA_PATH, "./sam_vit_h_4b8939.pth")
+)
 
 # Tag2Text checkpoint
 TAG2TEXT_CHECKPOINT_PATH = os.path.join(TAG2TEXT_PATH, "./tag2text_swin_14m.pth")
@@ -303,11 +299,13 @@ def process_ai2thor_classes(classes: List[str], add_classes:List[str]=[], remove
     
 def main(args: argparse.Namespace):
     ### Initialize the Grounding DINO model ###
-    grounding_dino_model = Model(
-        model_config_path=GROUNDING_DINO_CONFIG_PATH, 
-        model_checkpoint_path=GROUNDING_DINO_CHECKPOINT_PATH, 
-        device=args.device
-    )
+    if args.class_set != "none" and args.detector == "dino":
+        from groundingdino.util.inference import Model
+        grounding_dino_model = Model(
+            model_config_path=GROUNDING_DINO_CONFIG_PATH,
+            model_checkpoint_path=GROUNDING_DINO_CHECKPOINT_PATH,
+            device=args.device
+        )
 
     ### Initialize the SAM model ###
     if args.class_set == "none":
@@ -318,7 +316,7 @@ def main(args: argparse.Namespace):
     ###
     # Initialize the CLIP model
     clip_model, _, clip_preprocess = open_clip.create_model_and_transforms(
-        "ViT-H-14", "laion2b_s32b_b79k"
+        "ViT-H-14", "laion2b_s32b_b79k", cache_dir=os.environ.get("CG_CLIP_CACHE_DIR")
     )
     clip_model = clip_model.to(args.device)
     clip_tokenizer = open_clip.get_tokenizer("ViT-H-14")
@@ -360,6 +358,8 @@ def main(args: argparse.Namespace):
     elif args.class_set == "minimal":
         classes = FOREGROUND_MINIMAL_CLASSES
     elif args.class_set in ["tag2text", "ram"]:
+        from ram.models import ram, tag2text
+        from ram import inference_tag2text, inference_ram
         ### Initialize the Tag2Text or RAM model ###
         
         if args.class_set == "tag2text":
